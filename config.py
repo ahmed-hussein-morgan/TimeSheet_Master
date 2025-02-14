@@ -19,7 +19,10 @@ class Config():
         cls.app = app
 
         # General configuration for app
-        cls.app.config['SECRET_KEY'] = os.environ.get("ITICKET_SECRET_KEY")
+
+        ####### UPDATE NEEDED BELOW #######
+        # Add a global environment variable in Windows  (and linux for testing)
+        cls.app.config['SECRET_KEY'] = os.environ.get("TIMESHEET_MASTER_SECRET_KEY")
 
         # Database configuration
         cls.configure_database()
@@ -35,23 +38,19 @@ class Config():
         env = os.getenv('FLASK_ENV')
         if env == 'development':
 
-            # Below is the mysql configuration
-            #cls.app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.environ.get('DEV_USER')}:{os.environ.get('DEV_PASS')}@localhost/{os.environ.get('FULL_ITICKET_DEV_DB')}"
-            
-            # Below is the sqlite configuration to be used in github code space
 
-            # cls.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-            # cls.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+            ####### UPDATE NEEDED BELOW #######
+            # Setup Mysql on Windows and create and activate the root user with all grants
+            # Create new Database on mysql for both Windows and linux
+            # Create a deamon user as a temp backdoor for testing all feature locally
+            # Create and restore all sensitive data like the mysql data base login as global env variables stored locally
 
-
-            # print(f"Database URI: {cls.app.config['SQLALCHEMY_DATABASE_URI']}")
-            
-            # user = 'ahmed'
-            # password = 'ahmed'
             # cls.app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{user}:{password}@localhost/iticket_database_development"
             #cls.app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.environ.get('DEV_USER')}:{os.environ.get('DEV_PASS')}@localhost/{os.environ.get('FULL_ITICKET_DEV_DB')}"
-            cls.app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://dev_root_user_daemon:dev_root_password_daemon@localhost/iticket_database_development"
+            cls.app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://dev_root_user_daemon:dev_root_password_daemon@localhost/timesheet_master_database_development"
             #cls.app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://ahmed:ahmed@localhost/iticket_database_development"
+
+            
         elif env == 'testing':
             cls.app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{os.environ.get('TST_USER')}:{os.environ.get('TST_PASS')}@localhost/{os.environ.get('FULL_TICKETTREK_TST_DB')}"
         elif env == 'production':  # Assuming 'production'

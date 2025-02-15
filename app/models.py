@@ -20,26 +20,13 @@ from app import db
 # bcrypt = Bcrypt()
 
 
-class User(UserMixin, db.Model):
-    """ A table containing employees data """
-    __tablename__ = "employees"
 
-
-
+class UserLogin(UserMixin, db.Model):
+    """ A table contain all authinticated users and their hashed passwords"""
+    __tablename__ = "user_login"
     __table_args__ = {'extend_existing': True}
 
-
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
-    employee_id = db.Column(db.Integer, unique=True, nullable=False)
-    employee_name = db.Column(db.String(20), nullable=False, unique=True)
-    department = db.Column(db.String(20), nullable=False)
-    job_title = db.Column(db.String(20), nullable=False)
-
-    role_type = db.Column(db.String(20), nullable=False)
-    # role_type_id = db.Column(db.Integer, db.ForeignKey('roles.id'), nullable=False)
-
-    email = db.Column(db.String(64), nullable=False)
-
+    user_name = db.Column(db.String(20), nullable=False, unique=True)
     password_hash = db.Column(db.String(256), nullable=False)
 
     def set_password(self, password):
@@ -49,23 +36,26 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
 
-
-    branch = db.Column(db.String(30), nullable=False)
-    user_status = db.Column(db.String(20), nullable=False, default="Enabled")
-
-
-class Ticket(db.Model):
-    """ A table that contains all the ticket details """
-    __tablename__ = "tickets"
+class Employee(UserMixin, db.Model):
+    """ A table contains employees' data """
+    __tablename__ = "employees"
 
     __table_args__ = {'extend_existing': True}
 
-    ticket_id = db.Column(db.Integer, primary_key=True, autoincrement=False, unique=True)
-    ticket_branch = ticket_type = db.Column(db.String(20), nullable=False)
-    ticket_type = db.Column(db.String(20), nullable=False)
-    ticket_category = db.Column(db.String(50), nullable=False)
-    ticket_title = db.Column(db.String(100), nullable=True)
-    ticket_details = db.Column(db.Text, nullable=True)
+    employee_id = db.Column(db.String(6), nullable=False, primary_key=True)
+    employee_name = db.Column(db.String(20), nullable=False, unique=True)
+    employee_department = db.Column(db.String(20), nullable=False)
+    employee_job_title = db.Column(db.String(20), nullable=False)
+    branch = db.Column(db.String(30), nullable=False)
+    employee_attendance = db.relationship("Attendance", backref="employee", lazy=True)
+
+
+class Attendance(db.Model):
+    """ A table that contains all employees' attendance """
+    __tablename__ = "attendance"
+
+    __table_args__ = {'extend_existing': True}
+
 
     #submission_date = db.Column(db.Date, nullable=False, default=func.now().cast(db.Date))
     # submission_date = db.Column(db.Date, nullable=True, default=func.now().cast(db.Date))
@@ -78,12 +68,11 @@ class Ticket(db.Model):
     # submission_time = db.Column(db.String(15), nullable=False)
 
 
-    ticket_status = db.Column(db.String(20), nullable=False, default="Submitted")
-    tickets = db.relationship("IT", backref=db.backref("ticket", lazy=True))
+    employee = db.Column(db.String(6), db.ForeignKey("employee.employee_id"))
 
 
 class Machine(db.Model):
-    """ A table that contains some ticket details for tech users only """
+    """ A table that contains fingerprint machines data """
     __tablename__ = "machines"
 
     __table_args__ = {'extend_existing': True}

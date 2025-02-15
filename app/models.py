@@ -82,24 +82,14 @@ class Ticket(db.Model):
     tickets = db.relationship("IT", backref=db.backref("ticket", lazy=True))
 
 
-class IT(db.Model):
+class Machine(db.Model):
     """ A table that contains some ticket details for tech users only """
-    __tablename__ = "it_tickets"
+    __tablename__ = "machines"
 
     __table_args__ = {'extend_existing': True}
 
-    index = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    ticket_id = db.Column(db.Integer, db.ForeignKey('tickets.ticket_id'), nullable=False)
-    tech_name = db.Column(db.String(30), nullable=True)
-    update_date = db.Column(db.DateTime(timezone=True), nullable=False, default=datetime.now(timezone.utc))
-    update_ticket_comment = db.Column(db.Text, nullable=True)
+    index = db.Column(db.Integer, autoincrement=True)
+    machine_location = db.Column(db.String(30), nullable=False)
+    machine_ip = db.Column(db.String(30), nullable=False, unique=True)
 
-class UserTicket(db.Model):
-    """ A linking table to link between the employee table and the ticket table """
-    __tablename__ = "employee_ticket"
 
-    __table_args__ = {'extend_existing': True}
-
-    index = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'), nullable=False)
-    ticket_id = db.Column(db.Integer, db.ForeignKey('tickets.ticket_id'), nullable=False)

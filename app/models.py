@@ -16,8 +16,6 @@ from datetime import datetime, timezone, time, date
 
 from app import db
 
-# db = SQLAlchemy()
-# bcrypt = Bcrypt()
 
 
 
@@ -49,7 +47,6 @@ class Employee(UserMixin, db.Model):
     branch = db.Column(db.String(30), nullable=False)
     employee_attendance = db.relationship("Attendance", backref="employee", lazy="dynamic")
 
-
 class Attendance(db.Model):
     """ A table that contains all employees' attendance """
     __tablename__ = "attendance"
@@ -64,8 +61,6 @@ class Attendance(db.Model):
     overtime_hours = db.Column(db.Float, default=0.0)  
     delay_penalty = db.Column(db.Float, default=0.0)  
     date = db.Column(db.Date, nullable=False) 
-
-
 
 
 class Machine(db.Model):

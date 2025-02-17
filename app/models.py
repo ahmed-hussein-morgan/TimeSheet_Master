@@ -8,7 +8,7 @@ from sqlalchemy.sql.expression import func
 from sqlalchemy import text, Index
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime, timezone
+from datetime import datetime, timezone, time, date
 #from . import login_manager
 
 # from flask_bcrypt import Bcrypt 
@@ -47,7 +47,7 @@ class Employee(UserMixin, db.Model):
     employee_department = db.Column(db.String(20), nullable=False)
     employee_job_title = db.Column(db.String(20), nullable=False)
     branch = db.Column(db.String(30), nullable=False)
-    employee_attendance = db.relationship("Attendance", backref="employee", lazy=True)
+    employee_attendance = db.relationship("Attendance", backref="employee", lazy="dynamic")
 
 
 class Attendance(db.Model):
@@ -56,19 +56,16 @@ class Attendance(db.Model):
 
     __table_args__ = {'extend_existing': True}
 
-
-    #submission_date = db.Column(db.Date, nullable=False, default=func.now().cast(db.Date))
-    # submission_date = db.Column(db.Date, nullable=True, default=func.now().cast(db.Date))
-
-    submission_datetime = db.Column(db.DateTime(timezone=True), nullable=False, default=datetime.now(timezone.utc))
-
-    #submission_time = db.Column(db.Time, nullable=False, default=text("TIME(CURRENT_TIMESTAMP)"))
-    # submission_time = db.Column(db.Time, nullable=True, default=text("TIME(CURRENT_TIMESTAMP)"))
-
-    # submission_time = db.Column(db.String(15), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    employee_id = db.Column(db.String(6), db.ForeignKey("employees.employee_id"), nullable=False)
+    check_in_time = db.Column(db.Time, nullable=False)  
+    check_out_time = db.Column(db.Time, nullable=False) 
+    total_hours = db.Column(db.Float, nullable=False)  
+    overtime_hours = db.Column(db.Float, default=0.0)  
+    delay_penalty = db.Column(db.Float, default=0.0)  
+    date = db.Column(db.Date, nullable=False) 
 
 
-    employee = db.Column(db.String(6), db.ForeignKey("employee.employee_id"))
 
 
 class Machine(db.Model):

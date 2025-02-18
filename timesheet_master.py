@@ -12,5 +12,5 @@ migrate = Migrate(app, db)
 
 @app.shell_context_processor
 def make_shell_context():
-    from app.models import Machine  # Import models here
-    return dict(db=db, Machine=Machine, Role=Role, IT=IT, Ticket=Ticket, UserTicket=UserTicket)
+    from app.models import Machine, Attendance, Employee, UserLogin  # Import models here
+    return dict(db=db, Machine=Machine, Attendance=Attendance, Employee=Employee, UserLogin=UserLogin)

@@ -38,8 +38,8 @@ def Create_app(config_name='development'):
     # bcrypt = Bcrypt(app)
 
     # Set up logging
-    logging.basicConfig()
-    logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
+    # logging.basicConfig()
+    # logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
 
     bootstrap.init_app(app)
     db.init_app(app)
@@ -87,24 +87,16 @@ def Create_app(config_name='development'):
 
 
 def create_daemon_tech_user():
-    from app.models import User
+    from app.models import UserLogin
 
     # Check if the daemon tech user already exists
-    daemon_user = User.query.filter_by(employee_name='daemon_tech').first()
+    daemon_user = UserLogin.query.filter_by(user_name='daemon_tech').first()
     
     if not daemon_user:
         # Create the daemon tech user
-        new_user = User(
-            employee_id =1,  
-            employee_name='daemon_tech',
-            department='IT',
-            job_title='Tech Support',
-            email='daemon_tech@example.com',
-            role_type='Tech',
-            password_hash=generate_password_hash('daemon_tech_password'),
-            branch='Head Quarter',
-            user_status='Enabled'
-            
+        new_user = UserLogin( 
+            user_name='daemon_tech',
+            password_hash=generate_password_hash('daemon_tech_password'),            
         )
         
         # Add the user to the session and commit

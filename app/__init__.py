@@ -64,8 +64,9 @@ def Create_app(config_name='development'):
     # app.register_blueprint(main_blueprint)
 
 
-    from .auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint)
+    # Comment the auth blueprint temprorary 
+    # from .auth import auth as auth_blueprint
+    # app.register_blueprint(auth_blueprint)
 
 
     from .tech import tech as tech_blueprint

@@ -6,7 +6,7 @@
 
 from sqlalchemy.sql.expression import func
 from sqlalchemy import text, Index
-from flask_login import UserMixin
+#from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timezone, time, date
 #from . import login_manager
@@ -19,7 +19,8 @@ from app import db
 
 
 
-class UserLogin(UserMixin, db.Model):
+#class UserLogin(UserMixin, db.Model):
+class UserLogin(db.Model):
     """ A table contain all authinticated users and their hashed passwords"""
     __tablename__ = "user_login"
     __table_args__ = {'extend_existing': True}
@@ -34,7 +35,9 @@ class UserLogin(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
 
-class Employee(UserMixin, db.Model):
+#class Employee(UserMixin, db.Model):
+
+class Employee (db.Model):
     """ A table contains employees' data """
     __tablename__ = "employees"
 

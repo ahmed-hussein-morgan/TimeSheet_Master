@@ -3,7 +3,7 @@ from flask import current_app
 from flask_wtf import FlaskForm 
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, EmailField, SelectField, TextAreaField, IntegerField
 from wtforms.validators import InputRequired, length, Email, EqualTo, DataRequired, ValidationError
-from ..models import User, Ticket, IT, UserTicket
+from ..models import UserLogin, Employee, Attendance, Machine
 
 
 

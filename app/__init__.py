@@ -8,12 +8,17 @@ from sqlalchemy import text, Index
 from config import get_config
 import logging
 from werkzeug.security import generate_password_hash
+
+from dotenv import load_dotenv
+
+
 #from flask_login import LoginManager
 
 # from flask_bcrypt import Bcrypt
 # from flask_wtf.csrf import CSRFProtect
 
-
+# Load environment variables from .env file
+load_dotenv()
 
 bootstrap = Bootstrap()
 db = SQLAlchemy()
@@ -81,7 +86,7 @@ def Create_app(config_name='development'):
         # to allow the new app user to login to the app and test all feature 
         # allowed only into the development phase
         create_daemon_tech_user()
-
+        app.run(debug=True)
 
     return app
 

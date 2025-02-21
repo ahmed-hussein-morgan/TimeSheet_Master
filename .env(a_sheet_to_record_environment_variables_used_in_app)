@@ -1,0 +1,7 @@
+DEV_USER=user
+DEV_PASS=password
+DEV_DB=database_name
+SECRET_KEY=9b691cb396
+FLASK_ENV=environment_name_in_app_config-either_development_production_or_test
+FLASK_DEBUG=1
+FLASK_APP=timesheet_master.py

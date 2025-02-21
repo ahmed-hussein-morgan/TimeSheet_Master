@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 from sqlalchemy.sql.expression import func
 from sqlalchemy import text, Index
 from config import get_config
-import logging
+#import logging
 from werkzeug.security import generate_password_hash
 
 from dotenv import load_dotenv

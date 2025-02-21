@@ -1,7 +1,7 @@
 # type: ignore
 from flask import render_template, redirect, request, url_for, flash, current_app
 from . import tech
-from flask_login import login_user, logout_user, login_required, current_user
+#from flask_login import login_user, logout_user, login_required, current_user
 from ..models import UserLogin, Employee, Attendance, Machine
 from .forms import NewUserForm, SearchTicketForm, SearchUserForm, NewTicketForm, UpdateUserForm
 from .. import db

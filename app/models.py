@@ -25,6 +25,7 @@ class UserLogin(db.Model):
     __tablename__ = "user_login"
     __table_args__ = {'extend_existing': True}
 
+    id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(20), nullable=False, unique=True)
     password_hash = db.Column(db.String(256), nullable=False)
 
@@ -72,6 +73,7 @@ class Machine(db.Model):
 
     __table_args__ = {'extend_existing': True}
 
+    id = db.Column(db.Integer, primary_key=True)
     index = db.Column(db.Integer, autoincrement=True)
     machine_location = db.Column(db.String(30), nullable=False)
     machine_ip = db.Column(db.String(30), nullable=False, unique=True)

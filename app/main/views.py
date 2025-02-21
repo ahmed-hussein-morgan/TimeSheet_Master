@@ -4,7 +4,7 @@ from . import main
 from .. import db
 from .forms import NewTicketForm, NewUserForm, SearchTicketForm, SearchUserForm
 from app.models import User, Ticket, IT, UserTicket
-from flask_login import login_user, logout_user, login_required, current_user
+#from flask_login import login_user, logout_user, login_required, current_user
 from ..auth.forms import LoginForm
 
 # import logging

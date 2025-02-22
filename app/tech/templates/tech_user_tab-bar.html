@@ -13,19 +13,19 @@
 
 <div class="content" id="tabs-bar">
     <nav class="nav nav-tabs">
-        <a href="#" class="nav-item nav-link">
+        <a href="{{ url_for('tech.tech_new_user') }}" class="nav-item nav-link">
             <i class="bi bi-person-plus"></i> New User
         </a>
 
-        <a href="#" class="nav-item nav-link">
+        <a href="{{ url_for('tech.tech_all_users') }}" class="nav-item nav-link">
             <i class="bi-people"></i> All Users
         </a>
 
-        <a href="#" class="nav-item nav-link">
+        <a href="{{ url_for('tech.tech_new_employee') }}" class="nav-item nav-link">
             <i class="bi bi-person-plus"></i> New Employee
         </a>
 
-        <a href="#" class="nav-item nav-link">
+        <a href="{{ url_for('tech.tech_all_employees') }}" class="nav-item nav-link">
             <i class="bi-people"></i> All Employees
         </a>
     </nav>

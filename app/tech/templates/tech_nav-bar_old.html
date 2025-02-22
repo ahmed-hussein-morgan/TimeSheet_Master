@@ -1,0 +1,14 @@
+{% extends "base_layer.html" %}
+
+
+{% block navbar %}
+
+<div class="nav-bar">
+    <ul>
+        <li> <a class="bi bi-person-fill" href="{{ url_for('tech.tech_new_user') }}"> User Control </a> </li>
+        <li> <a class="bi bi-card-heading" href="{{ url_for('tech.tech_new_ticket') }}"> Attendance </a> </li>
+        <li> <a class="bi bi-door-open-fill fixed-bottom" href="#"> LogOut </a> </li>
+    </ul>
+</div>
+
+{% endblock navbar %}

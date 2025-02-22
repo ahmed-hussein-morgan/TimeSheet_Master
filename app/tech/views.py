@@ -8,9 +8,12 @@ from .. import db
 from datetime import datetime, timezone
 from sqlalchemy import or_, update
 
+
+
 @tech.route("/new-user", methods=["GET", "POST"])
 def tech_new_user():
-    return render_template("tech_add_user.html", title="TimeSheet - New User")
+    form = NewUserForm()
+    return render_template("tech_add_user.html", title="TimeSheet - New User", form=form)
 
 
 
@@ -18,6 +21,7 @@ def tech_new_user():
 def tech_all_users():
     users = UserLogin.query.all()
     return render_template("tech_all_users.html", title="TimeSheet - All Users", users=users)
+    # return render_template("tech_all_users.html", title="TimeSheet - All Users")
 
 
 @tech.route("/new-employee", methods=["GET", "POST"])

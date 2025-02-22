@@ -11,19 +11,19 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
-                    {{ form.user_id.label(class="form-label") }}
+                    {{ form.employee_id.label(class="form-label") }}
 
                     <!-- <label class="form-label"> User ID </label> -->
                     <!-- <input type="text" class="form-control" placeholder="User ID"> -->
-                    {% if form.user_id.errors %}
-                        {{ form.user_id(class="form-control form-control is-invalid") }}
+                    {% if form.employee_id.errors %}
+                        {{ form.employee_id(class="form-control form-control is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.user_id.errors %}
+                            {% for error in form.employee_id.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.user_id(class="form-control form-control") }}                    
+                        {{ form.employee_id(class="form-control form-control") }}                    
                     {% endif %}
 
                 </div>
@@ -32,19 +32,19 @@
                     <!-- <label class="form-label"> User Name </label>
                     <input type="text" class="form-control" placeholder="User Name"> -->
 
-                    {{ form.user_name.label(class="form-label") }}
+                    {{ form.employee_name.label(class="form-label") }}
 
                     <!-- <label class="form-label"> User ID </label> -->
                     <!-- <input type="text" class="form-control" placeholder="User ID"> -->
-                    {% if form.user_name.errors %}
-                        {{ form.user_name(class="form-control form-control is-invalid") }}
+                    {% if form.employee_name.errors %}
+                        {{ form.employee_name(class="form-control form-control is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.user_name.errors %}
+                            {% for error in form.employee_name.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.user_name(class="form-control form-control") }}                    
+                        {{ form.employee_name(class="form-control form-control") }}                    
                     {% endif %}
                 </div>
             </div>
@@ -65,17 +65,17 @@
                         <option>Quality Control</option>
                     </select> -->
                     
-                    {{ form.user_department.label(class="form-label") }}
+                    {{ form.employee_department.label(class="form-label") }}
 
-                    {% if form.user_department.errors %}
-                    {{ form.user_department(class="form-control is-invalid") }}
+                    {% if form.employee_department.errors %}
+                    {{ form.employee_departmentt(class="form-control is-invalid") }}
                     <div class="invalid-feedback">
-                        {% for error in form.user_department.errors %}
+                        {% for error in form.employee_department.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.user_department(class="form-select") }}                   
+                    {{ form.employee_department(class="form-select") }}                   
                     {% endif %}
 
                 </div>
@@ -83,17 +83,17 @@
                 <div class="form-group">
                     <!-- <label class="form-label"> User Title</label>
                     <input type="text" class="form-control"> -->
-                    {{ form.user_job.label(class="form-label") }}
+                    {{ form.employee_job_title.label(class="form-label") }}
 
-                    {% if form.user_job.errors %}
-                    {{ form.user_job(class="form-control is-invalid") }}
+                    {% if form.employee_job_title.errors %}
+                    {{ form.employee_job_title(class="form-control is-invalid") }}
                     <div class="invalid-feedback">
-                        {% for error in form.user_job.errors %}
+                        {% for error in form.employee_job_title.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.user_job(class="form-select") }}                   
+                    {{ form.employee_job_title(class="form-select") }}                   
                     {% endif %}
                 </div>
 
@@ -109,17 +109,17 @@
                     <option>New Cairo</option> 
                     <option>6th October</option>    
                 </select> -->
-                {{ form.user_branch.label(class="form-label") }}
+                {{ form.employee_branch.label(class="form-label") }}
 
-                {% if form.user_branch.errors %}
-                {{ form.user_branch(class="form-control is-invalid") }}
+                {% if form.employee_branch.errors %}
+                {{ form.employee_branch(class="form-control is-invalid") }}
                 <div class="invalid-feedback">
-                    {% for error in form.user_branch.errors %}
+                    {% for error in form.employee_branch.errors %}
                         <span>{{ error }}</span>
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.user_branch(class="form-select") }}                   
+                {{ form.employee_branch(class="form-select") }}                   
                 {% endif %}
 
             </div>
@@ -127,7 +127,7 @@
 
         </div>
         <div class="sub-bt">
-            <button type="submit" class="btn btn-primary">Add Employee</button>
+            {{ form.submit(class="btn btn-primary") }}
         </div>
     </form>
 

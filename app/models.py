@@ -48,7 +48,7 @@ class Employee (db.Model):
     employee_name = db.Column(db.String(20), nullable=False, unique=True)
     employee_department = db.Column(db.String(20), nullable=False)
     employee_job_title = db.Column(db.String(20), nullable=False)
-    branch = db.Column(db.String(30), nullable=False)
+    employee_branch = db.Column(db.String(30), nullable=False)
     employee_attendance = db.relationship("Attendance", backref="employee", lazy="dynamic")
 
 class Attendance(db.Model):

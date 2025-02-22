@@ -18,13 +18,13 @@
         </thead>
 
         <tbody>
-            {% for user in users %}
+            {% for employee in employees %}
             <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.employee_name }}</td>
-                <td>{{ user.department }}</td>
-                <td>{{ user.job_title }}</td>
-                <td>{{ user.branch }}</td>
+                <td>{{ employee.employee_id }}</td>
+                <td>{{ employee.employee_name }}</td>
+                <td>{{ employee.employee_department }}</td>
+                <td>{{ employee.employee_job_title }}</td>
+                <td>{{ employee.employee_branch }}</td>
             </tr>
             {% endfor %}
         </tbody>

@@ -11,7 +11,7 @@ class NewUserForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired(), length(min=2, max=20)])
     password = PasswordField('Password', validators=[InputRequired()])
     confirm_password = PasswordField("Confirm Password", validators=[InputRequired(), EqualTo('password', message='Passwords must match')])
-    submit = SubmitField("Create")
+    submit = SubmitField("Add User")
 
 
     def validate_user_name(self, user_name):
@@ -24,4 +24,4 @@ class NewUserForm(FlaskForm):
 
 
 class NewEmployeeForm(FlaskForm):
-    
+    pass

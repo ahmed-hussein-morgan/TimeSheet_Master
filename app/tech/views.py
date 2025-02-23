@@ -36,7 +36,12 @@ def tech_all_employees():
     return render_template("tech_all_employees.html", title="TimeSheet - All Employees", employees=employees)
 
 
-@tech.route("/machines")
-def tech_all_machines():
-    machines = Machine.query.all()
-    return render_template("tech_machines.html", title="TimeSheet - Machines", machines=machines)
+# @tech.route("/machines")
+# def tech_all_machines():
+#     machines = Machine.query.all()
+#     return render_template("tech_machines.html", title="TimeSheet - Machines", machines=machines)
+
+@tech.route("/attendance")
+def tech_raw_data():
+    
+    return render_template("attendance_raw.html", title="TimeSheet - Attendance")

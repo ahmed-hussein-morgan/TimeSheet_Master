@@ -17,7 +17,7 @@ def tech_new_user():
 
 
 
-@tech.route("/all-users", methods=["GET", "POST"])
+@tech.route("/all-users")
 def tech_all_users():
     users = UserLogin.query.all()
     return render_template("tech_all_users.html", title="TimeSheet - All Users", users=users)
@@ -30,7 +30,13 @@ def tech_new_employee():
     return render_template("tech_add_employee.html", title="TimeSheet - New Employee", form=form)
 
 
-@tech.route("/all-employees", methods=["GET", "POST"])
+@tech.route("/all-employees")
 def tech_all_employees():
     employees = Employee.query.all()
     return render_template("tech_all_employees.html", title="TimeSheet - All Employees", employees=employees)
+
+
+@tech.route("/machines")
+def tech_all_machines():
+    machines = Machine.query.all()
+    return render_template("tech_machines.html", title="TimeSheet - Machines", machines=machines)

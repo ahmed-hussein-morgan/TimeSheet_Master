@@ -73,9 +73,13 @@ class Machine(db.Model):
 
     __table_args__ = {'extend_existing': True}
 
-    id = db.Column(db.Integer, primary_key=True)
-    index = db.Column(db.Integer, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     machine_location = db.Column(db.String(30), nullable=False)
     machine_ip = db.Column(db.String(30), nullable=False, unique=True)
+
+    # handle the current machine status is it either on or off 
+    # choose if you need to save the current status into database or only in cach memeory or in sission 
+    # i am nor prefeering to save it in database because the database tables will be shared between users including the status in this case
+    # which it does not make sense in case one user changed it in database to be connected for example but another user does not need to connect it
 
 

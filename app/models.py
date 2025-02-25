@@ -49,33 +49,39 @@ class Employee (db.Model):
     employee_department = db.Column(db.String(20), nullable=False)
     employee_job_title = db.Column(db.String(20), nullable=False)
     employee_branch = db.Column(db.String(30), nullable=False)
-    employee_attendance = db.relationship("Attendance", backref="employee", lazy="dynamic")
-
-class Attendance(db.Model):
-    """ A table that contains all employees' attendance """
-    __tablename__ = "attendance"
-
-    __table_args__ = {'extend_existing': True}
-
-    id = db.Column(db.Integer, primary_key=True)
-    employee_id = db.Column(db.String(6), db.ForeignKey("employees.employee_id"), nullable=False)
-    check_in_time = db.Column(db.Time, nullable=False)  
-    check_out_time = db.Column(db.Time, nullable=False) 
-    total_hours = db.Column(db.Float, nullable=False)  
-    overtime_hours = db.Column(db.Float, default=0.0)  
-    delay_penalty = db.Column(db.Float, default=0.0)  
-    date = db.Column(db.Date, nullable=False) 
+    employee_attendance = db.Column(db.DateTime)
+    # employee_attendance = db.relationship("Attendance", backref="employee", lazy="dynamic")
 
 
-class Machine(db.Model):
-    """ A table that contains fingerprint machines data """
-    __tablename__ = "machines"
+# Cancel the attendance table for now - try to save date and time in employee sheet as Raw data - we may not need to save the calculated data into database
 
-    __table_args__ = {'extend_existing': True}
+# class Attendance(db.Model):
+#     """ A table that contains all employees' attendance """
+#     __tablename__ = "attendance"
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    machine_location = db.Column(db.String(30), nullable=False)
-    machine_ip = db.Column(db.String(30), nullable=False, unique=True)
+#     __table_args__ = {'extend_existing': True}
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     employee_id = db.Column(db.String(6), db.ForeignKey("employees.employee_id"), nullable=False)
+#     check_in_time = db.Column(db.Time, nullable=False)  
+#     check_out_time = db.Column(db.Time, nullable=False) 
+#     total_hours = db.Column(db.Float, nullable=False)  
+#     overtime_hours = db.Column(db.Float, default=0.0)  
+#     delay_penalty = db.Column(db.Float, default=0.0)  
+#     date = db.Column(db.Date, nullable=False) 
+
+
+# Cancel Machines table for now - we may not need it in this phase we could activate and use it in the future phases
+
+# class Machine(db.Model):
+#     """ A table that contains fingerprint machines data """
+#     __tablename__ = "machines"
+
+#     __table_args__ = {'extend_existing': True}
+
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     machine_location = db.Column(db.String(30), nullable=False)
+#     machine_ip = db.Column(db.String(30), nullable=False, unique=True)
 
     # handle the current machine status is it either on or off 
     # choose if you need to save the current status into database or only in cach memeory or in sission 

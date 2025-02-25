@@ -3,7 +3,7 @@ from flask import render_template, redirect, request, url_for, flash
 from . import auth
 from .. import tech, non_tech
 #from flask_login import login_user, logout_user, login_required, current_user
-from ..models import User
+from ..models import UserLogin
 from .forms import LoginForm
 
 @auth.route('/', methods=['GET', 'POST'])
@@ -11,7 +11,7 @@ from .forms import LoginForm
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(employee_name=form.user_name.data).first()
+        user = UserLogin.query.filter_by(employee_name=form.user_name.data).first()
         if user and user.check_password(form.password.data):
         # if user and user.check_password(password_hash, form.password.data):
             login_user(user, remember=form.remember.data)

@@ -54,5 +54,7 @@ class NewEmployeeForm(FlaskForm):
         if name:
             raise ValidationError("This User Name is already exist. Please choose another one")
 
-        
+
+class SearchAttendanceDate(FlaskForm):
+          
 

@@ -1,9 +1,10 @@
 # type: ignore
 from flask import current_app
 from flask_wtf import FlaskForm 
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, EmailField, SelectField, TextAreaField, IntegerField,HiddenField
-from wtforms.validators import InputRequired, length, Email, EqualTo, DataRequired, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, SelectField, HiddenField, DateField
+from wtforms.validators import InputRequired, length, EqualTo, ValidationError
 from ..models import UserLogin, Employee
+from dateutil import parser
 
 
 class NewUserForm(FlaskForm):
@@ -56,5 +57,18 @@ class NewEmployeeForm(FlaskForm):
 
 
 class SearchAttendanceDate(FlaskForm):
-          
+    start_date = DateField("From", format="%d-%m-%Y", validators=[InputRequired(message="You have to insert starting date")])
+    end_date = DateField("To", format="%d-%m-%Y", validators=[InputRequired(message="You have to insert ending date")])
+    submit = SubmitField("Search")
 
+    def validate_start_date(self, start_date):
+        date_format = "%d-%m-%Y"
+        if not parser.parse(start_date.data):
+            raise ValidationError(f"The date format must be in form: {date_format}.")
+        
+    def validate_end_date(self, end_date):
+        date_format = "%d-%m-%Y"
+        if not parser.parse(end_date.data):
+            raise ValidationError(f"The date format must be in form: {date_format}.")
+
+        

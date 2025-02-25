@@ -3,7 +3,7 @@ from flask import render_template, redirect, request, url_for, flash, current_ap
 from . import tech
 #from flask_login import login_user, logout_user, login_required, current_user
 from ..models import UserLogin, Employee
-from .forms import NewUserForm, NewEmployeeForm
+from .forms import NewUserForm, NewEmployeeForm, SearchAttendanceDate
 from .. import db
 from datetime import datetime, timezone
 from sqlalchemy import or_, update
@@ -43,5 +43,7 @@ def tech_all_employees():
 
 @tech.route("/attendance")
 def tech_raw_data():
+    form = SearchAttendanceDate()
+
     
-    return render_template("attendance_raw.html", title="TimeSheet - Attendance")
+    return render_template("attendance_raw.html", title="TimeSheet - Attendance", form=form)

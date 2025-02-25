@@ -2,6 +2,58 @@
 
 {% block content %}
 
+<div id="new-container">
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <!-- {{ form.csrf_token }} -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-6">
+                    {{ form.start_date.label(class="form-label") }}
+
+                    <!-- <label class="form-label"> User ID </label> -->
+                    <!-- <input type="text" class="form-control" placeholder="User ID"> -->
+                    {% if form.start_date.errors %}
+                        {{ form.start_date(class="form-control form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.start_date.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.start_date(class="form-control form-control") }}                    
+                    {% endif %}
+
+                </div>
+    
+                <div class="col-6">
+                    <!-- <label class="form-label"> User Name </label>
+                    <input type="text" class="form-control" placeholder="User Name"> -->
+
+                    {{ form.end_date.label(class="form-label") }}
+
+                    <!-- <label class="form-label"> User ID </label> -->
+                    <!-- <input type="text" class="form-control" placeholder="User ID"> -->
+                    {% if form.end_date.errors %}
+                        {{ form.end_date(class="form-control form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.end_date.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.end_date(class="form-control form-control") }}                    
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="sub-bt">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+
 
 
 <div id="tech_tickets_table">

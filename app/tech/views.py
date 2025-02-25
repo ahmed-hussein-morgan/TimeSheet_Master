@@ -45,5 +45,10 @@ def tech_all_employees():
 def tech_raw_data():
     form = SearchAttendanceDate()
 
-    
     return render_template("attendance_raw.html", title="TimeSheet - Attendance", form=form)
+
+@tech.route("/calculated")
+def tech_calculated_data():
+    form = SearchAttendanceDate()
+
+    return render_template("attendance_calculated.html", title="TimeSheet - Attendance", form=form)

@@ -26,7 +26,13 @@ table_name = "employees"
 
 insert_query = f"""
 INSERT INTO {table_name} (employee_id, employee_name, employee_department, employee_job_title, employee_branch)
-VALUES (%s, %s, %s, %s, %s);
+VALUES (%s, %s, %s, %s, %s)
+ON DUPLICATE KEY UPDATE
+    employee_name = VALUES(employee_name),
+    employee_department = VALUES(employee_department),
+    employee_job_title = VALUES(employee_job_title),
+    employee_branch = VALUES(employee_branch);
+
 """
 
 

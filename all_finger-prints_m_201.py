@@ -2,7 +2,7 @@ from zk import ZK
 import xlsxwriter
 
 conn = None
-zk = ZK('192.168.1.202', port=4370, timeout=50)
+zk = ZK('192.168.1.203', port=4370, timeout=50)
 try:
     print ('Connecting to device ...')
     conn = zk.connect()

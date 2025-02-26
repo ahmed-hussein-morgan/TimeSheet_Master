@@ -20,6 +20,11 @@ li a {
 
 }
 
+#export-btn {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 #tabs-bar {
     margin-left: 230px;
     padding-top: 20px;

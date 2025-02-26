@@ -52,3 +52,10 @@ def tech_calculated_data():
     form = SearchAttendanceDate()
 
     return render_template("attendance_calculated.html", title="TimeSheet - Attendance", form=form)
+
+@tech.route("/export")
+def export_to_excel():
+    pass
+    # form = SearchAttendanceDate()
+
+    # return render_template("attendance_calculated.html", title="TimeSheet - Attendance", form=form)

@@ -24,6 +24,7 @@ try:
     print('Writing to Excel File...')
 
     for attendance in attendances:
+        print(f"{attendance}")
         worksheet.write(row, col, attendance.user_id)
         worksheet.write(row, col + 1, 'Ahmed Huseein')
         worksheet.write(row, col + 2, 'IT')

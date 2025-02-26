@@ -45,7 +45,7 @@ class Employee (db.Model):
     __table_args__ = {'extend_existing': True}
 
     employee_id = db.Column(db.String(6), nullable=False, primary_key=True)
-    employee_name = db.Column(db.String(20), nullable=False, unique=True)
+    employee_name = db.Column(db.String(20), nullable=False)
     employee_department = db.Column(db.String(20), nullable=False)
     employee_job_title = db.Column(db.String(20), nullable=False)
     employee_branch = db.Column(db.String(30), nullable=False)

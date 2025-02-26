@@ -4,3 +4,4 @@ venv
 *.index
 *[0-9]*
 .env
+*.xlsx

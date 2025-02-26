@@ -50,8 +50,19 @@ class Employee (db.Model):
     employee_job_title = db.Column(db.String(100), nullable=False)
     employee_branch = db.Column(db.String(50), nullable=False)
     employee_attendance = db.Column(db.DateTime)
-    # employee_attendance = db.relationship("Attendance", backref="employee", lazy="dynamic")
+    employee_attendance = db.relationship("Attendance", backref="employee", lazy="dynamic")
 
+
+class Attendance(db.Model):
+    """ A table that contains all employees' attendance """
+    __tablename__ = "attendance"
+
+    __table_args__ = {'extend_existing': True}
+
+    id = db.Column(db.Integer, primary_key=True)
+    employee_id = db.Column(db.String(6), db.ForeignKey("employees.employee_id"), nullable=False)
+    employee_attendance = db.Column(db.DateTime)
+    # date = db.Column(db.Date, nullable=False)
 
 # Cancel the attendance table for now - try to save date and time in employee sheet as Raw data - we may not need to save the calculated data into database
 

@@ -57,8 +57,8 @@ class NewEmployeeForm(FlaskForm):
 
 
 class SearchAttendanceDate(FlaskForm):
-    start_date = DateField("From", format="%d-%m-%Y", validators=[InputRequired(message="You have to insert starting date")])
-    end_date = DateField("To", format="%d-%m-%Y", validators=[InputRequired(message="You have to insert ending date")])
+    start_date = DateField("From", format="%Y-%m-%d", validators=[InputRequired(message="You have to insert starting date")])
+    end_date = DateField("To", format="%Y-%m-%d", validators=[InputRequired(message="You have to insert ending date")])
     submit = SubmitField("Search")
 
     def validate_start_date(self, start_date):

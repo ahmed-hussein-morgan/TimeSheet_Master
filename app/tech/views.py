@@ -69,6 +69,7 @@ def tech_raw_data():
                     'timestamp': timestamp_str,
                     'status': status_tuple
                 }
+                
 
         return render_template("attendance_raw.html", title="TimeSheet - Attendance", form=form)
     except Exception as e:
